@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KNN Reviews</title>
+</head>
+<body>
+    <h1>KNN Reviews</h1>
+
+    <form action="/data/closest_cities" method="GET">
+        <label for="classes">Classes:</label>
+        <input type="number" id="classes" name="classes" value="6"><br><br>
+        
+        <label for="k">Page Number:</label>
+        <input type="number" id="k" name="k" value="3"><br><br>
+        
+        <label for="words">Page Size:</label>
+        <input type="number" id="words" name="words" value="100"><br><br>
+
+        <input type="submit" value="Get Info">
+    </form>
+</body>
+</html>
