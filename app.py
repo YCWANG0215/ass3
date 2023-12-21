@@ -169,7 +169,7 @@ def knn_reviews():
 
 
     # 构建SQL查询语句，筛选出包含指定城市名的评论
-    query2 = "SELECT reviews.score, reviews.review FROM reviews"
+    query2 = "SELECT reviews.city, reviews.score, reviews.review FROM reviews"
     if cache.exists(query2):
         query_list_2 = json.loads(cache.get(query2).decode())
         print("cache hit: [{}]".format(query2))
@@ -186,28 +186,28 @@ def knn_reviews():
         if city_info['score'] is not None:
             city_info['score'] = int(city_info['score'])
 
-    weighted_avg_scores = {}
+    # weighted_avg_scores = {}
 
-    for class_index, cities in cities_by_class.items():
-        total_weighted_score = 0
-        total_weight = 0
+    # for class_index, cities in cities_by_class.items():
+    #     total_weighted_score = 0
+    #     total_weight = 0
     
-    for city_name in cities:
-        # Find population and score for the city from query_list and query_list_2
-        population = next((item['population'] for item in query_list if item['city'] == city_name), None)
-        score = next((item['score'] for item in query_list_2 if item['city'] == city_name), None)
+    # for city_name in cities:
+    #     # Find population and score for the city from query_list and query_list_2
+    #     population = next((item['population'] for item in query_list if item['city'] == city_name), None)
+    #     score = next((item['score'] for item in query_list_2 if item['city'] == city_name), None)
         
-        if population is not None and score is not None:
-            # Calculate weighted score
-            weighted_score = population * score
-            total_weighted_score += weighted_score
-            total_weight += population
+    #     if population is not None and score is not None:
+    #         # Calculate weighted score
+    #         weighted_score = population * score
+    #         total_weighted_score += weighted_score
+    #         total_weight += population
     
-    # Calculate weighted average score for the class
-    if total_weight > 0:
-        weighted_avg_scores[class_index] = total_weighted_score / total_weight
-    else:
-        weighted_avg_scores[class_index] = 0  # or handle the case when total_weight is zero
+    # # Calculate weighted average score for the class
+    # if total_weight > 0:
+    #     weighted_avg_scores[class_index] = total_weighted_score / total_weight
+    # else:
+    #     weighted_avg_scores[class_index] = 0  # or handle the case when total_weight is zero
 
 # Now you have a dictionary weighted_avg_scores containing weighted average scores for each class
 
