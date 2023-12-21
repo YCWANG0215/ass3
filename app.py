@@ -31,7 +31,7 @@ def index():
 
 @app.route('/')
 def hello_world():  # put application's code here
-    return render_template('/stat/closest_cities.html')
+    return render_template('index.html')
 
 
 DB_CONN_STR = "AccountEndpoint=https://tutorial-uta-cse6332.documents.azure.com:443/;AccountKey=fSDt8pk5P1EH0NlvfiolgZF332ILOkKhMdLY6iMS2yjVqdpWx4XtnVgBoJBCBaHA8PIHnAbFY4N9ACDbMdwaEw==;"
@@ -221,7 +221,7 @@ def knn_reviews():
     return jsonify({
         'cities_by_class': cities_by_class,
         'center_city': centers_by_class,
-        'weighted_avg_score': weighted_avg_scores,
+        # 'weighted_avg_score': weighted_avg_scores,
         'response_time_ms': response_time
     })
 
@@ -305,4 +305,5 @@ def get_lat_lng(city_name, query_list) -> tuple:
     return None, None
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8084, debug=True)
+    # app.run(host="127.0.0.1", port=8084, debug=True)
+    app.run()
