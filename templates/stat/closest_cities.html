@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Closest Cities</title>
+</head>
+<body>
+    <h1>Get Closest Cities</h1>
+
+    <form action="/data/closest_cities" method="GET">
+        <label for="city">City Name:</label>
+        <input type="text" id="city" name="city"><br><br>
+        
+        <label for="page">Page Number:</label>
+        <input type="number" id="page" name="page" value="0"><br><br>
+        
+        <label for="page_size">Page Size:</label>
+        <input type="number" id="page_size" name="page_size" value="50"><br><br>
+
+        <input type="submit" value="Get Cities">
+    </form>
+</body>
+</html>
